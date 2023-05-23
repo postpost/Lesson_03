@@ -10,11 +10,6 @@ private:
 
 public:
 
-	void SetNums(double num1, double num2) {
-		this->num1 = num1;
-		this->num2 = num2;
-	}
-
 	double Add() {
 
 		return this->num1 + this->num2;
@@ -84,7 +79,7 @@ int main() {
 			std::cin >> num2;
 		} while (positive_num != calc.set_num2(num2));
 	
-		calc.SetNums(num1, num2);
+		//calc.SetNums(num1, num2);
 
 		std::cout << "num1 + num2 = " << calc.Add() << '\n'
 			<< "num1 - num2 = " << calc.substract_1_2() << '\n'

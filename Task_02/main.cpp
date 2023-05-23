@@ -8,8 +8,19 @@ private:
 	int start_num = 1;
 	
 public:
-	void SetNum(int num) {
-		this->start_num = num;
+
+	Counter() {
+
+		this->start_num = 1;
+	};
+
+	Counter(int start_num) {
+		this->start_num = start_num;
+	}
+
+	void SetCount(int start_num) {
+
+		this->start_num = start_num;
 	}
 
 	int Increment() {
@@ -45,9 +56,9 @@ int main() {
 		int start_num = 0;
 		std::cout << "¬ведите начальное значение счЄтчика: ";
 		std::cin >> start_num;
-		count.SetNum(start_num);
+		count.SetCount(start_num);
 	}
-	
+		
 	do {
 		std::cout << "¬ведите команду ('+', '-', '=' или 'x'): ";
 		std::cin >> cmd;
@@ -61,7 +72,7 @@ int main() {
 		else if (cmd == "=") {
 			std::cout << count.Result() << std::endl;
 		}
-	} while (cmd != "x");
+	} while (cmd != "х");
 		
 	count.Close();
 }
