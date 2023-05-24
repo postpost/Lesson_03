@@ -18,10 +18,10 @@ public:
 		this->start_num = start_num;
 	}
 
-	void SetCount(int start_num) {
+	/*void SetCount(int start_num) {
 
 		this->start_num = start_num;
-	}
+	}*/
 
 	int Increment() {
 		return this->start_num++;
@@ -35,6 +35,22 @@ public:
 		return start_num;
 	}
 
+	void Calculate(Counter* count, std::string cmd) {
+		
+		if (cmd == "+") {
+			Increment();
+		}
+		else if (cmd == "-") {
+			Decrement();
+		}
+		else if (cmd == "=") {
+			std::cout << Result() << std::endl;
+		}
+		else {
+			count->Close();
+		}
+	}
+
 	void Close() {
 		std::cout << "До свидания!" << std::endl;
 	}
@@ -46,9 +62,7 @@ int main() {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 
-
-	Counter count;
-
+	
 	std::string cmd;
 	std::cout << "Вы хотите указать начальное значение счётчика? Введите да или нет: ";
 	std::cin >> cmd;
@@ -56,23 +70,21 @@ int main() {
 		int start_num = 0;
 		std::cout << "Введите начальное значение счётчика: ";
 		std::cin >> start_num;
-		count.SetCount(start_num);
+		Counter* count_2 = new Counter (start_num);
+		do {
+			std::cout << "Введите команду ('+', '-', '=' или 'x'): ";
+			std::cin >> cmd;
+			count_2->Calculate(count_2, cmd);
+		} while (cmd != "х");
 	}
-		
-	do {
-		std::cout << "Введите команду ('+', '-', '=' или 'x'): ";
-		std::cin >> cmd;
-		
-		if (cmd == "+") {
-			count.Increment();
-		}
-		else if (cmd == "-") {
-			count.Decrement();
-		}
-		else if (cmd == "=") {
-			std::cout << count.Result() << std::endl;
-		}
-	} while (cmd != "х");
-		
-	count.Close();
+	else {
+		Counter* count = new Counter;
+		do {
+			std::cout << "Введите команду ('+', '-', '=' или 'x'): ";
+			std::cin >> cmd;
+			count->Calculate(count, cmd);
+		} while (cmd != "х");
+
+	}
+	
 }
