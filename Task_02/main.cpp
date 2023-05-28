@@ -35,7 +35,7 @@ public:
 		return start_num;
 	}
 
-	void Calculate(Counter* count, std::string cmd) {
+	void Calculate(std::string cmd) {
 		
 		if (cmd == "+") {
 			Increment();
@@ -47,7 +47,7 @@ public:
 			std::cout << Result() << std::endl;
 		}
 		else {
-			count->Close();
+			Close();
 		}
 	}
 
@@ -74,7 +74,7 @@ int main() {
 		do {
 			std::cout << "¬ведите команду ('+', '-', '=' или 'x'): ";
 			std::cin >> cmd;
-			count_2->Calculate(count_2, cmd);
+			count_2->Calculate(cmd);
 		} while (cmd != "х");
 	}
 	else {
@@ -82,7 +82,7 @@ int main() {
 		do {
 			std::cout << "¬ведите команду ('+', '-', '=' или 'x'): ";
 			std::cin >> cmd;
-			count->Calculate(count, cmd);
+			count->Calculate(cmd);
 		} while (cmd != "х");
 
 	}
